@@ -23,6 +23,7 @@ classes = [
 def home():
     return {"message": "Infant Cry Analyzer API running"}
 
+
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
 
@@ -31,9 +32,7 @@ async def predict(file: UploadFile = File(...)):
 
     # extract MFCC features
     mfcc = librosa.feature.mfcc(y=audio, sr=sr, n_mfcc=40)
-    features = np.mean(mfcc.T, axis=0)
-
-    features = features.reshape(1, -1)
+    features = np.mean(mfcc.T, axis=0).reshape(1, -1)
 
     prediction = model.predict(features)
 

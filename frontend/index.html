@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Infant Cry Analyzer</title>
+</head>
+
+<body>
+
+<h2>Infant Cry Analyzer</h2>
+
+<input type="file" id="audioFile">
+<button onclick="uploadAudio()">Analyze Cry</button>
+
+<p id="result"></p>
+
+<script>
+
+async function uploadAudio() {
+
+    const fileInput = document.getElementById("audioFile");
+    const file = fileInput.files[0];
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch("http://127.0.0.1:8000/predict", {
+        method: "POST",
+        body: formData
+    });
+
+    const data = await response.json();
+
+    document.getElementById("result").innerText =
+        "Prediction: " + data.prediction;
+}
+
+</script>
+
+</body>
+</html>
