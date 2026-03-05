@@ -1,3 +1,8 @@
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from utils.load_dataset import load_dataset
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -31,7 +36,7 @@ model = tf.keras.Sequential([
 
     tf.keras.layers.Dense(64, activation='relu'),
 
-    tf.keras.layers.Dense(4, activation='softmax')
+    tf.keras.layers.Dense(8, activation='softmax')
 
 ])
 

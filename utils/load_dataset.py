@@ -3,10 +3,14 @@ import numpy as np
 from utils.audio_features import extract_features
 
 labels = {
-    "hunger":0,
-    "pain":1,
-    "discomfort":2,
-    "sleepiness":3
+"belly pain":0,
+"burping":1,
+"cold_hot":2,
+"discomfort":3,
+"hungry":4,
+"lonely":5,
+"scared":6,
+"tired":7
 }
 
 def load_dataset(dataset_path):
